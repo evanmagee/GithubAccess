@@ -18,7 +18,7 @@ github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
 
 # Use API
 gtoken <- config(token = github_token)
-req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
+req <- GET("https://api.github.com/users/evanmagee/repos", gtoken)
 
 # Take action on http error
 stop_for_status(req)
@@ -30,5 +30,5 @@ json1 = content(req)
 gitDF = jsonlite::fromJSON(jsonlite::toJSON(json1))
 
 # Subset data.frame
-gitDF[gitDF$full_name == "jtleek/datasharing", "created_at"] 
+gitDF[gitDF$full_name == "evanmagee/datasharing", "created_at"] 
 
