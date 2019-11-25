@@ -32,3 +32,16 @@ gitDF = jsonlite::fromJSON(jsonlite::toJSON(json1))
 # Subset data.frame
 gitDF[gitDF$full_name == "evanmagee/datasharing", "created_at"] 
 
+# Interrogate the Github API to extract data from my github account
+
+myData = fromJSON("https://api.github.com/users/evanmagee")
+
+#displays number of followers
+myData$followers
+followers = fromJSON("https://api.github.com/users/evanmagee/followers")
+followers$login #Names of my followers
+
+myData$following #Number of people i am following
+
+following = fromJSON("https://api.github.com/users/evanmagee/following")
+following$login #gives the names of all the people i am following
