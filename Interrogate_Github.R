@@ -44,4 +44,9 @@ followers$login #Names of my followers
 myData$following #Number of people i am following
 
 following = fromJSON("https://api.github.com/users/evanmagee/following")
-following$login #gives the names of all the people i am following
+following$login #shows the names of all the people i am following 
+
+myData$public_repos #Number of repositories I have
+
+
+
