@@ -4,7 +4,7 @@ install.packages("httpuv")
 library(httpuv)
 install.packages("httr")
 library(httr)
-
+install.packages("plotly")
 # Can be github, linkedin etc depending on application
 oauth_endpoints("github")
 
@@ -71,3 +71,31 @@ githubDB$login
 # Retrieve a list of usernames
 id = githubDB$login
 user_ids = c(id)
+
+# Create an empty vector and data.frame
+users = c()
+usersDB = data.frame(
+  username = integer(),
+  following = integer(),
+  followers = integer(),
+  repos = integer(),
+  dateCreated = integer()
+)
+
+#loops through users and adds to list
+for(i in 1:length(user_ids))
+{
+  
+  followingURL = paste("https://api.github.com/users/", user_ids[i], "/following", sep = "")
+  followingRequest = GET(followingURL, gtoken)
+  followingContent = content(followingRequest)
+  
+  #Does not add users if they have no followers
+  if(length(followingContent) == 0)
+  {
+    next
+  }
+}
+
+
+
