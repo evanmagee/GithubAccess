@@ -49,4 +49,10 @@ following$login #shows the names of all the people i am following
 myData$public_repos #Number of repositories I have
 
 
+repos = fromJSON("https://api.github.com/users/evanmagee/repos")
+repos$name #Names of my repositories 
+repos$created_at #When repositories were created
+repos$full_name #gives names of repositiories
+
+myData$bio #Shows my bio
 
