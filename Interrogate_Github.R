@@ -56,3 +56,18 @@ repos$full_name #gives names of repositiories
 
 myData$bio #Shows my bio
 
+#Part 2 - Visualisations
+
+#Using Matt Layher's account because he has more information than me. Found him online 
+
+
+myData = GET("https://api.github.com/users/mdlayher/followers?per_page=100;", gtoken)
+stop_for_status(myData)
+extract = content(myData)
+#converts into dataframe
+githubDB = jsonlite::fromJSON(jsonlite::toJSON(extract))
+githubDB$login
+
+# Retrieve a list of usernames
+id = githubDB$login
+user_ids = c(id)
