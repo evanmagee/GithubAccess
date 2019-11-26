@@ -140,7 +140,7 @@ if(length(users) > 150)
 }
 next
 
-
+library(plotly)
 
 #Use plotly to graph
 Sys.setenv("plotly_username"="evanmagee")
@@ -149,4 +149,6 @@ Sys.setenv("plotly_api_key"="U6bhtM82CFCsMq6a39n3")
 #plot one graphs repositories vs followers coloured by year
 plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, text = ~paste("Followers: ", followers, "<br>Repositories: ", repos, "<br>Date Created:", dateCreated), color = ~dateCreated)
 plot1
+api_create(plot1, filename = "Repositories vs Followers")
+
 
