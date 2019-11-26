@@ -151,4 +151,7 @@ plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, text = ~paste("Follo
 plot1
 api_create(plot1, filename = "Repositories vs Followers")
 
+#plot two graphs following vs followers again coloured by year
+plot2 = plot_ly(data = usersDB, x = ~following, y = ~followers, text = ~paste("Followers: ", followers, "<br>Following: ", following), color = ~dateCreated)
+plot2
 
