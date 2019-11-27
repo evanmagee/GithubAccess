@@ -156,4 +156,14 @@ plot2 = plot_ly(data = usersDB, x = ~following, y = ~followers, text = ~paste("F
 plot2
 api_create(plot2, filename = "Following vs Followers")
 
+#below code is to graph the top 10 most popular languages used 250 users.
+languages = c()
 
+for (i in 1:length(users))
+{
+  RepositoriesUrl = paste("https://api.github.com/users/", users[i], "/repos", sep = "")
+  Repositories = GET(RepositoriesUrl, gtoken)
+  RepositoriesContent = content(Repositories)
+  RepositoriesDF = jsonlite::fromJSON(jsonlite::toJSON(RepositoriesContent))
+  RepositoriesNames = RepositoriesDF$name
+}
