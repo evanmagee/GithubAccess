@@ -1,3 +1,4 @@
+
 install.packages("jsonlite")
 library(jsonlite)
 install.packages("httpuv")
@@ -149,12 +150,12 @@ Sys.setenv("plotly_api_key"="U6bhtM82CFCsMq6a39n3")
 #plot one graphs repositories vs followers coloured by year
 plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, text = ~paste("Followers: ", followers, "<br>Repositories: ", repos, "<br>Date Created:", dateCreated), color = ~dateCreated)
 plot1
-api_create(plot1, filename = "Repositories vs Followers")
+api_create(plot1, filename = "Repositories vs Followers for Matt Layher")
 
 #plot two graphs following vs followers again coloured by year
 plot2 = plot_ly(data = usersDB, x = ~following, y = ~followers, text = ~paste("Followers: ", followers, "<br>Following: ", following), color = ~dateCreated)
 plot2
-api_create(plot2, filename = "Following vs Followers")
+api_create(plot2, filename = "Following vs Followers for Matt Layher")
 
 #below code is to graph the top 10 most popular languages used 250 users.
 languages = c()
@@ -185,6 +186,16 @@ for (i in 1:length(users))
   }
   next
 }
+allLanguages = sort(table(languages), increasing=TRUE)
+top10Languages = allLanguages[(length(allLanguages)-9):length(allLanguages)]
 
+languageDF = as.data.frame(top10Languages)
+
+plot3 = plot_ly(data = languageDF, x = languageDF$languages, y = languageDF$Freq, type = "bar")
+plot3
+
+Sys.setenv("plotly_username"="evanmagee")
+Sys.setenv("plotly_api_key"="U6bhtM82CFCsMq6a39n3")
+api_create(plot3, filename = "Most used languages by users")
 
 
